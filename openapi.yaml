@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Taboo Plugin
+  version: 1.0.0
+servers:
+  - url: PLUGIN_HOSTNAME
+paths:
+  /random_card:
+    get:
+      operationId: random_card
+      description: Call this at the beginning of each turn to get a new target word to clue. Returns a Taboo card object with a target word that is not in the given list of used words.
+      parameters:
+        - name: used_words
+          in: query
+          description: A list of target words that have been used so far.
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        200:
+          description: A random Taboo card.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  target_word:
+                    type: string
+                    description: The target word for the Taboo card.
+                  taboo_words:
+                    type: array
+                    description: A list of taboo words associated with the target word.
+                    items:
+                      type: string
+        400:
+          description: All cards have been used.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: An error message indicating that all cards have been used.

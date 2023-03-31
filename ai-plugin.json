@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Taboo",
+  "name_for_model": "taboo",
+  "description_for_human": "Play Taboo with ChatGPT! ChatGPT gives the clues and you guess the words.",
+  "description_for_model": "Play a game of Taboo with the user. Instructions:\n1. Explain the rules to the user. Ask the user if they want to add any constraints to the clues (e.g. 'each word in the clues must start with the same letter as the target word' or 'use ASCII art for clues instead of words').\n2. Use the plugin to get a random card.\n3. Clue the target word to the user - the clue must be less than 5 words long and cannot include the target word or any of the taboo words (including conjugations, plurals, or sub-parts of the target word + taboo words).\n4. The user gets one guess. Score 1 point if they get it and 0 if they don't. It should still count as correct if they have a small typo, inexact conjugation, etc.\n5. After the user guesses, tell them whether they were correct and also tell them what the taboo words were.\n6. Use the plugin again to get the next random card.\n7. Play 5 rounds total. At the end, report the final score.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "PLUGIN_HOSTNAME/openapi.yaml",
+    "is_user_authenticated": false
+  },
+  "logo_url": "PLUGIN_HOSTNAME/logo.png",
+  "contact_email": "",
+  "legal_info_url": ""
+}
