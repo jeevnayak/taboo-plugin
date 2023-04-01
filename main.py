@@ -36,7 +36,7 @@ async def plugin_manifest():
     with open("ai-plugin.json") as f:
         text = f.read()
         # This is a trick we do to populate the PLUGIN_HOSTNAME constant in the manifest
-        text = text.replace("PLUGIN_HOSTNAME", f"http://{host}")
+        text = text.replace("PLUGIN_HOSTNAME", f"https://{host}")
         return quart.Response(text, mimetype="text/json")
 
 
@@ -46,7 +46,7 @@ async def openapi_spec():
     with open("openapi.yaml") as f:
         text = f.read()
         # This is a trick we do to populate the PLUGIN_HOSTNAME constant in the OpenAPI spec
-        text = text.replace("PLUGIN_HOSTNAME", f"http://{host}")
+        text = text.replace("PLUGIN_HOSTNAME", f"https://{host}")
         return quart.Response(text, mimetype="text/yaml")
 
 
